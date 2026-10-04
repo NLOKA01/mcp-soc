@@ -1,0 +1,195 @@
+{
+  "tools": [
+    {
+      "name": "hello",
+      "description": "Vérifie que le serveur MCP fonctionne.",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {},
+        "type": "object"
+      }
+    },
+    {
+      "name": "query_siem",
+      "description": "Recherche des événements SIEM dans Wazuh Indexer.",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "agent_id": {
+            "default": "",
+            "type": "string"
+          },
+          "limit": {
+            "default": 10,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "get_alerts",
+      "description": "Récupère les dernières alertes Wazuh.",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "limit": {
+            "default": 10,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "search_ioc",
+      "description": "Recherche un IOC dans les alertes Wazuh.",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "ioc": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "ioc"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "get_timeline",
+      "description": "Chronologie des événements d'un agent.",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "agent_id": {
+            "default": "",
+            "type": "string"
+          },
+          "limit": {
+            "default": 20,
+            "type": "integer"
+          }
+        },
+        "type": "object"
+      }
+    },
+    {
+      "name": "lookup_ip",
+      "description": "Enrichit une IP avec AbuseIPDB.",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "ip": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "ip"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "analyze_hash",
+      "description": "Analyse un hash avec VirusTotal.",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "hash_fichier": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "hash_fichier"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "get_cve_info",
+      "description": "Récupère les infos d'une CVE depuis la NVD.",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "cve_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "cve_id"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "block_ip_firewall",
+      "description": "Bloque une IP (DRY-RUN).",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "ip": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "ip"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "isolate_endpoint",
+      "description": "Isole un endpoint (DRY-RUN).",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "agent_id": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "agent_id"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "create_incident",
+      "description": "Crée un incident (DRY-RUN).",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "titre": {
+            "type": "string"
+          },
+          "description": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "titre",
+          "description"
+        ],
+        "type": "object"
+      }
+    },
+    {
+      "name": "send_notification",
+      "description": "Envoie une notification (DRY-RUN).",
+      "input_schema": {
+        "additionalProperties": false,
+        "properties": {
+          "message": {
+            "type": "string"
+          }
+        },
+        "required": [
+          "message"
+        ],
+        "type": "object"
+      }
+    }
+  ]
+}
