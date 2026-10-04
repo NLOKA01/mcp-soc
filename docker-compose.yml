@@ -1,0 +1,24 @@
+version: "3.9"
+
+services:
+  mcp-soc:
+    build: .
+    container_name: mcp-soc
+    ports:
+      - "8000:8000"
+    environment:
+      - MCP_TEST_MODE=${MCP_TEST_MODE:-0}
+      - KEYCLOAK_ISSUER=${KEYCLOAK_ISSUER}
+      - KEYCLOAK_CLIENT_ID=${KEYCLOAK_CLIENT_ID}
+      - WAZUH_INDEXER_PASSWORD=${WAZUH_INDEXER_PASSWORD}
+      - ABUSEIPDB_API_KEY=${ABUSEIPDB_API_KEY}
+      - VIRUSTOTAL_API_KEY=${VIRUSTOTAL_API_KEY}
+    env_file:
+      - .env
+    restart: unless-stopped
+    networks:
+      - soc-net
+
+networks:
+  soc-net:
+    driver: bridge
